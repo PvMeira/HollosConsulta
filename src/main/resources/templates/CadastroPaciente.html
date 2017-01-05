@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorator="LayoutPadrao">
+
+<head>
+	<title>Hollos :Cadastro de Paciente</title>
+	
+	<style type="text/css">
+	
+	.textAreaQueixas
+	{
+	  height: 141px;
+      width: 543px;
+	}
+	
+	.textAreaObs
+	{
+	height: 58px;
+	width: 543px;
+	}
+	
+	.inputIdade
+	{
+	width: 100px;
+	}
+	.inputMail
+	{
+	width: 350px;
+	}
+		
+	</style>
+</head>
+
+<section layout:fragment="conteudo">
+    <form class="form-horizontal" method="POST" th:action="@{/pacientes}" th:object="${patient}">
+    	<div layout:include="MensagemErro"></div>
+    	<div layout:include="MensagemGeral"></div>
+    
+    	<div class="panel panel-default">
+    		<div class="panel-body">
+    		<input type="hidden" th:field="*{id}"/>
+    		
+				<div class="form-group" th:classappend="${#fields.hasErrors('name')} ? has-error">
+					<label for="name" class="col-sm-2 control-label">Nome</label>
+					<div class="col-sm-4"> 
+						<input type="text" class="form-control" id="name" th:field="*{name}"/>
+					</div>
+				</div>
+				
+				<div class="form-group" th:classappend="${#fields.hasErrors('email')} ? has-error">
+					<label for="mail" class="col-sm-2 control-label">Email</label>
+					<div class="col-sm-4"> 
+						<input type="text" class="form-control inputMail" id="mail" th:field="*{email}"/>
+					</div>
+				</div>
+				
+				<div class="form-group" th:classappend="${#fields.hasErrors('phone')} ? has-error">
+					<label for="phone" class="col-sm-2 control-label">Telefone</label>
+					<div class="col-sm-2">   
+						<input type="text" class="form-control" id="phone" th:field="*{phone}"/>
+					</div>
+				</div>
+				
+				<div class="form-group" th:classappend="${#fields.hasErrors('age')} ? has-error">
+					<label for="age" class="col-sm-2 control-label">Idade</label>
+					<div class="col-sm-2">   
+						<input type="number" class="form-control inputIdade" id="age" th:field="*{age}"/>
+					</div>
+				</div>
+				
+				<div class="form-group" th:classappend="${#fields.hasErrors('address')} ? has-error">
+					<label for="address" class="col-sm-2 control-label">Endereço</label>
+					<div class="col-sm-2">   
+						<input type="text" class="form-control" id="address" th:field="*{address}"/>
+					</div>
+				</div>
+				
+				<div class="form-group" th:classappend="${#fields.hasErrors('occupation')} ? has-error">
+					<label for="occupation" class="col-sm-2 control-label">Ocupação/profissão</label>
+					<div class="col-sm-2">   
+						<input type="text" class="form-control" id="occupation" th:field="*{occupation}"/>
+					</div>
+				</div>
+				
+				<div class="form-group" th:classappend="${#fields.hasErrors('complaint')} ? has-error">
+					<label for="complaint" class="col-sm-2 control-label">Queixas</label>
+					<div class="col-sm-2">   
+						<textarea class="form-control textAreaQueixas" 
+								  rows="5" id="complaint" maxlength="600" 
+								  th:field="*{complaint}"></textarea>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label for="treatment" class="col-sm-2 control-label">Tratamento</label>
+					<div class="col-sm-2">   
+						<textarea class="form-control textAreaQueixas" 
+								  rows="5" id="treatment" maxlength="600"
+								  th:field="*{treatment}"></textarea>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label for="observation" class="col-sm-2 control-label">Observações</label>
+					<div class="col-sm-2">   
+						<textarea class="form-control textAreaObs" 
+						          rows="5" id="observation"  maxlength="600"
+						          th:field="*{observation}"></textarea>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<button type="submit" class="btn btn-primary" title="Salvar" >Salvar</button>
+					</div>
+				</div>
+			</div>
+    	</div>
+    </form>
+</section>
+</html>
