@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.pvmeira.hollos.entity.Patient;
 import com.pvmeira.hollos.repository.PatientRepository;
+import com.pvmeira.hollos.repository.filter.PatientSearchFilter;
 
 @Service
 public class PatientService {
@@ -40,5 +41,10 @@ public class PatientService {
 
 	public List<Patient> listAllPatients() {
 		return patientRepository.findAll();
+	}
+
+	public List<Patient> filtrar(PatientSearchFilter filtro) {
+		String descricao = filtro.getDescricao() == null ? "%" : filtro.getDescricao();
+		return patientRepository.findByNameContaining(descricao);
 	}
 }

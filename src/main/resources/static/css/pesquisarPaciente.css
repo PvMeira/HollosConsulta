@@ -1,0 +1,43 @@
+.textAreaQueixas
+	{
+	  height: 141px;
+      width: 543px;
+	}
+	
+	.textAreaObs
+	{
+	height: 58px;
+	width: 543px;
+	}
+	
+	.inputIdade
+	{
+	width: 100px;
+	}
+	.inputMail
+	{
+	width: 350px;
+	}
+	.navbar-brand {
+	padding-top: 12px;
+}
+
+.panel-default {
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.alert {
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.aw-link-panel {
+	float: right;
+	padding: 0px;
+}
+
+.aw-titulo-panel {
+	float: left;
+	padding-top: 2px;
+}	
