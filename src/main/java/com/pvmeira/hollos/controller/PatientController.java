@@ -74,11 +74,18 @@ public class PatientController {
 	}
 	
 	
-	@RequestMapping(value = "{id}", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/delete/{id}")
 	public String excluir(@PathVariable Long id, RedirectAttributes atributes) {
 		patientService.delete(id);
 		atributes.addFlashAttribute("mensagem", "Registro exluído com sucesso!");
 		return "redirect:/pacientes";
 	}
-
+	
+	@RequestMapping("{id}")
+	public ModelAndView edicao(@PathVariable("id") Patient p, RedirectAttributes atributes) {
+		this.addOnHistory(ActionHistory.ALTER_HISTORY.getAction(), p);
+		ModelAndView mv = new ModelAndView(CADASTRO_VIEW);
+		mv.addObject(p);
+		return mv;
+	}
 }

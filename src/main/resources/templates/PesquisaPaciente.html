@@ -57,8 +57,15 @@
 						<td class="text-left"  th:text="${{p.occupation}}"></td>
 						<td class="text-left" th:text="${p.registerDate}"></td>
 						<td class="text-center">
-						<a class="btn btn-link btn-xs" data-toggle="modal" 
-						data-target="#confirmacaoExclusaoModal"><span class="glyphicon glyphicon-remove" th:attr="data-codigo=${p.id}, data-descricao=${p.name}"></span></a>
+						<a class="btn btn-link btn-xs"
+							th:href="@{/pacientes/{id}(id=${p.id})}" 
+							title="Editar" rel="tooltip" data-placement="top"> 
+								<span class="glyphicon glyphicon-pencil"></span>
+						</a>
+						
+						<a class="btn btn-link btn-xs"  th:href="@{/pacientes/delete/{id}(id=${p.id})}" 
+						title="Deletar" rel="tooltip" data-placement="top"><span class="glyphicon glyphicon-remove"></span></a>
+						
 						</td>
 					</tr>
 					<tr>
