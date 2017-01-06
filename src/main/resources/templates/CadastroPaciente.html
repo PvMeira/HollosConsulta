@@ -19,15 +19,15 @@
     		
 				<div class="form-group" th:classappend="${#fields.hasErrors('name')} ? has-error">
 					<label for="name" class="col-sm-2 control-label">Nome</label>
-					<div class="col-sm-4"> 
+					<div class="col-sm-2"> 
 						<input type="text" class="form-control" id="name" th:field="*{name}"/>
 					</div>
 				</div>
 				
 				<div class="form-group" th:classappend="${#fields.hasErrors('email')} ? has-error">
 					<label for="mail" class="col-sm-2 control-label">Email</label>
-					<div class="col-sm-4"> 
-						<input type="text" class="form-control inputMail" id="mail" th:field="*{email}"/>
+					<div class="col-sm-2"> 
+						<input type="text" class="form-control" id="mail" th:field="*{email}"/>
 					</div>
 				</div>
 				
@@ -36,14 +36,15 @@
 					<div class="col-sm-2">   
 						<input type="text" class="form-control" id="phone" th:field="*{phone}"/>
 					</div>
+		
 				</div>
-				
-				<div class="form-group" th:classappend="${#fields.hasErrors('age')} ? has-error">
-					<label for="age" class="col-sm-2 control-label">Idade</label>
-					<div class="col-sm-2">   
-						<input type="number" class="form-control inputIdade" id="age" th:field="*{age}"/>
+							
+					<div class="form-group" th:classappend="${#fields.hasErrors('age')} ? has-error">
+						<label for="age" class="col-sm-2 control-label">Idade</label>
+						<div class="col-sm-1">   
+							<input type="number" class="form-control inputIdade" id="age" th:field="*{age}"/>
+						</div>
 					</div>
-				</div>
 				
 				<div class="form-group" th:classappend="${#fields.hasErrors('address')} ? has-error">
 					<label for="address" class="col-sm-2 control-label">Endereço</label>
@@ -89,6 +90,7 @@
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10">
 						<button type="submit" class="btn btn-primary" title="Salvar" >Salvar</button>
+						<button type="reset" class="btn btn-primary" title="Limpar" >Limpar</button>
 					</div>
 				</div>
 			</div>

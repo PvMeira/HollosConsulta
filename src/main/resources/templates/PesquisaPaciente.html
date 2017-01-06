@@ -6,6 +6,11 @@
 
 <head>
 <title>Pesquisa de Pacientes</title>
+<style type="text/css">
+.v{
+float: right;
+}
+</style>
 </head>
 
 <section layout:fragment="conteudo">
@@ -14,9 +19,9 @@
 		<div class="panel-heading">
 		
 			<div class="clearfix">	
-				<h1 class="panel-title aw-titulo-panel">Pesquisa de Pacientes</h1>			
-				<a class="btn btn-link aw-link-panel" th:href="@{/pacientes/novo}" title="Novo Paciente" rel="tooltip" data-placement="top">Novo Paciente
-				</a>
+				<h1 class="panel-title aw-titulo-panel">Pesquisa de Pacientes</h1>	
+				<a class="btn btn-default v" th:href="@{/pacientes/novo}" role="button" title="Novo Paciente" rel="tooltip" data-placement="top">Novo Paciente
+				</a>		
 			</div>
 		</div>
 
@@ -75,7 +80,6 @@
 				</tbody>
 			</table>
 		</div>
-		<div layout:include="DialogoConfirmacaoExclusao"></div>
 	</div>
 </section>
 </html>
