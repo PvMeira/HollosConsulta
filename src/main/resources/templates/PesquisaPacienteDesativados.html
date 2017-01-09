@@ -5,7 +5,7 @@
 	layout:decorator="LayoutPadrao">
 
 <head>
-<title>Pesquisa de Pacientes</title>
+<title>Pesquisa de Pacientes(desativados)</title>
 <style type="text/css">
 .v{
 float: right;
@@ -19,30 +19,13 @@ float: right;
 		<div class="panel-heading">
 		
 			<div class="clearfix">	
-				<h1 class="panel-title aw-titulo-panel">Pesquisa de Pacientes</h1>	
+				<h1 class="panel-title aw-titulo-panel">Pesquisa de Pacientes(desativados)</h1>	
 				<a class="btn btn-default v" th:href="@{/normal/pacientes/novo}" role="button" title="Novo Paciente" rel="tooltip" data-placement="top">Novo Paciente
 				</a>		
 			</div>
 		</div>
 
-		<div class="panel-body">
-		<form method="GET"  class="form-horizontal" th:action="@{/normal/pacientes}" th:object="${filtro}">
-			<div class="form-group">
-				<div class="col-sm-4">
-					<div class="input-group">
-						<input class="form-control" placeholder="Digite nome do Paciente"
-						autofocus="autofocus" th:field="*{descricao}"></input>
-						<span class="input-group-btn">
-							<button type="submit" class="btn btn-default">
-								<i class="glyphicon glyphicon-search"></i>
-							</button>
-						</span>
-					</div>
-				</div>
-			</div>
-		
-    		</form> 
-		
+		<div class="panel-body">		
 			<table class="table table-bordered table-striped">
 				<thead>
 					<tr>
@@ -62,20 +45,11 @@ float: right;
 						<td class="text-left"  th:text="${{p.occupation}}"></td>
 						<td class="text-left" th:text="${{p.registerDate}}" ></td>
 						<td class="text-center">
-						<a class="btn btn-link btn-xs"
-							th:href="@{/normal/pacientes/{id}(id=${p.id})}" 
-							title="Editar" rel="tooltip" data-placement="top"> 
-								<span class="glyphicon glyphicon-pencil"></span>
-						</a>
-						
 							<a class="btn btn-link btn-xs"
-							th:href="@{/normal/pacientes/disable/{id}(id=${p.id})}" 
-							title="Desativar" rel="tooltip" data-placement="top"> 
-								<span class="glyphicon glyphicon-ban-circle"></span>
+							th:href="@{/normal/pacientes/desativados/able/{id}(id=${p.id})}" 
+							title="Ativar" rel="tooltip" data-placement="top"> 
+								<span class="glyphicon glyphicon-ok-sign"></span>
 						</a>
-						
-						<a class="btn btn-link btn-xs"  th:href="@{/normal/pacientes/delete/{id}(id=${p.id})}" 
-						title="Deletar" rel="tooltip" data-placement="top"><span class="glyphicon glyphicon-remove"></span></a>
 						
 						</td>
 					</tr>

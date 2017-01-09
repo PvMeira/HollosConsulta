@@ -1,7 +1,5 @@
 package com.pvmeira.hollos.entity;
 
-
-
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -66,12 +64,14 @@ public class Patient {
 	@Temporal(TemporalType.DATE)
 	private Date nextVisitDate;
 
+	private boolean active;
+
 	public Patient() {
 	}
 
 	public Patient(Long id, String name, String email, String phone, String complaint, String treatment,
 			String observation, int age, String address, String occupation, Date registerDate, Date lastVisitDate,
-			Date nextVisitDate) {
+			Date nextVisitDate, boolean active) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -86,6 +86,7 @@ public class Patient {
 		this.registerDate = registerDate;
 		this.lastVisitDate = lastVisitDate;
 		this.nextVisitDate = nextVisitDate;
+		this.active = active;
 	}
 
 	public Long getId() {
@@ -190,6 +191,14 @@ public class Patient {
 
 	public void setNextVisitDate(Date nextVisitDate) {
 		this.nextVisitDate = nextVisitDate;
+	}
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
 	}
 
 }

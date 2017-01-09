@@ -1,5 +1,6 @@
 package com.pvmeira.hollos.service;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -44,7 +45,34 @@ public class PatientService {
 	}
 
 	public List<Patient> filtrar(PatientSearchFilter filtro) {
+		List<Patient> result=new ArrayList<>();
 		String descricao = filtro.getDescricao() == null ? "%" : filtro.getDescricao();
-		return patientRepository.findByNameContaining(descricao);
+		List<Patient> list = patientRepository.findByNameContaining(descricao);
+		for (Patient patient : list) {
+			if(patient.isActive()){
+				result.add(patient);
+			}
+		}
+		return result;
+	}
+	public List<Patient> listAllPatientDisable(){
+		List<Patient> result=new ArrayList<>();
+		List<Patient> l = this.patientRepository.findAll();
+		
+		for (Patient patient : l) {
+			if(!patient.isActive()){
+				result.add(patient);
+			}
+		}
+		return result;
+	}
+	public void disactivePatient(Patient p){
+		p.setActive(false);
+		patientRepository.save(p);
+	}
+	
+	public void activePatient(Patient p){
+		p.setActive(Boolean.TRUE);
+		patientRepository.save(p);
 	}
 }

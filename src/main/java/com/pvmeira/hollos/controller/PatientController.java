@@ -22,7 +22,7 @@ import com.pvmeira.hollos.service.PatientHistoryService;
 import com.pvmeira.hollos.service.PatientService;
 
 @Controller
-@RequestMapping("/pacientes")
+@RequestMapping("/normal/pacientes")
 public class PatientController {
 
 	@Autowired
@@ -48,10 +48,11 @@ public class PatientController {
 		}
 
 		try {
+			patient.setActive(Boolean.TRUE);
 			patientService.save(patient);
 			this.addOnHistory(ActionHistory.SAVE_HISTORY.getAction(), patient);
 			atributes.addFlashAttribute("mensagem", "Paciente salvo com sucesso!");
-			return "redirect:/pacientes/novo";
+			return "redirect:/normal/pacientes/novo";
 		} catch (IllegalArgumentException e) {
 			return CADASTRO_VIEW;
 		}
@@ -78,7 +79,7 @@ public class PatientController {
 	public String excluir(@PathVariable Long id, RedirectAttributes atributes) {
 		patientService.delete(id);
 		atributes.addFlashAttribute("mensagem", "Registro exluído com sucesso!");
-		return "redirect:/pacientes";
+		return "redirect:/normal/pacientes";
 	}
 	
 	@RequestMapping("{id}")
@@ -87,5 +88,14 @@ public class PatientController {
 		ModelAndView mv = new ModelAndView(CADASTRO_VIEW);
 		mv.addObject(p);
 		return mv;
+	}
+	
+	
+	@RequestMapping("/disable/{id}")
+	public String disablePatient(@PathVariable("id") Patient p, RedirectAttributes atributes) {
+		this.addOnHistory(ActionHistory.ALTER_HISTORY.getAction(), p);
+		this.patientService.disactivePatient(p);
+		atributes.addFlashAttribute("mensagem", "Paciente disabilitado com sucesso!");
+		return "redirect:/normal/pacientes";
 	}
 }
